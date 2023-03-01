@@ -36,12 +36,7 @@
 запис GitHub. Створи ресурс `contacts` щоб отримати ендпоінт `/contacts`.
 Використай конструктор ресурсу та опиши об'єкт контакту як на ілюстрації.
 
-<Image
-  src="./assets/api.png"
-  alt="component preview"
-  maxWidth={960}
-/>
-
+<a target="_blank" rel="noopener noreferrer" href="/JuliaGolban/goit-react-hw-07-phonebook/blob/main/assets/api.png"></a><img src="/JuliaGolban/goit-react-hw-07-phonebook/raw/main/assets/api.png" alt="component preview" style="max-width: 100%;">
 ### Форма стану
 
 Додай у стан Redux обробку індикатора завантаження та помилки. Для цього зміни
