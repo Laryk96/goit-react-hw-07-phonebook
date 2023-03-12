@@ -1,27 +1,35 @@
 import { useSelector } from 'react-redux';
+import { BsPersonSquare, BsPhoneFill } from 'react-icons/bs';
 
 import Contact from 'components/ContactItem/ContactItem';
-import contactsFiltration from 'services/contactsFiltration';
-
-import { ContactsList, LabelItem } from './ContactList.styled';
-import { getContacts, getFilter } from 'redux/selectors';
+import { ContactsList, Label, Wrapper } from './ContactList.styled';
+import { filteredContacts } from 'redux/selectors';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const toFilter = useSelector(getFilter);
-  const filteredContacts = contactsFiltration(contacts, toFilter);
-  console.log(filteredContacts);
+  const contacts = useSelector(filteredContacts);
 
   return (
     <ContactsList>
       {contacts[0] && (
-        <LabelItem>
-          <span>Name:</span>
-          <span>Tell:</span>
-        </LabelItem>
+        <Label>
+          <Wrapper>
+            <i>
+              <BsPersonSquare />
+            </i>
+            <span>Name:</span>
+          </Wrapper>
+          <Wrapper>
+            <i>
+              <i>
+                <BsPhoneFill />
+              </i>
+            </i>
+            <span>Tell:</span>
+          </Wrapper>
+        </Label>
       )}
-      {filteredContacts.map(({ id, name, number }) => (
-        <Contact key={id} id={id} name={name} number={number} />
+      {contacts.map(({ id, name, phone }) => (
+        <Contact key={id} id={id} name={name} phone={phone} />
       ))}
     </ContactsList>
   );

@@ -2,16 +2,18 @@ import styled from '@emotion/styled';
 
 const ContactItem = styled.li`
   display: flex;
-  align-items: baseline;
+  align-items: center;
 
   justify-content: space-around;
-  gap: 20px;
+
   width: 100%;
-  padding: 10px;
+  padding: 15px 10px 15px 10px;
 
   color: #ffff;
   border-radius: 15px;
   background-color: #212121;
+
+  font-size: 18px;
 `;
 const Button = styled.button`
   width: 100px;
@@ -41,11 +43,24 @@ const Button = styled.button`
 `;
 const ContactName = styled.p`
   display: flex;
-  width: 380px;
-  justify-content: space-around;
-
-  text-align: center;
-  font-size: 18px;
+  min-width: 190px;
+  max-width: 220px;
 `;
 
-export { ContactItem, ContactName, Button };
+const Icons = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: grey;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  height: 100%;
+  gap: 10px;
+  align-items: center;
+`;
+export { ContactItem, ContactName, Button, Icons, Wrapper };

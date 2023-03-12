@@ -7,11 +7,28 @@ const ContactsList = styled.ul`
   justify-content: center;
 `;
 
-const LabelItem = styled.span`
+const Label = styled.div`
   display: flex;
-  margin-left: 90px;
-  gap: 160px;
-  font-size: 18px;
-  font-weight: 500;
+  margin-left: 50px;
+  gap: 180px;
+  align-items: center;
+
+  & span {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  & i {
+    font-size: 18px;
+    transform: translate(0, 2px);
+  }
 `;
-export { ContactsList, LabelItem };
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+`;
+export { ContactsList, Label, Wrapper };

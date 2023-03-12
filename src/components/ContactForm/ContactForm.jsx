@@ -3,13 +3,13 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Label, Input, Button, Form } from './ContactForm.styled';
-import { addContact } from 'redux/contactsSlice';
 import isNewName from 'services/checkContactName';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const onSubmitForm = (values, { resetForm }) => {
     if (isNewName(contacts, values.name)) {
       dispatch(addContact(values));
@@ -19,12 +19,12 @@ const ContactForm = () => {
 
   const initialValues = {
     name: '',
-    number: '',
+    phone: '',
   };
 
   const pattern = {
     str: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
-    number: '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
+    phone: '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
   };
 
   const schema = yup.object().shape({
@@ -34,7 +34,7 @@ const ContactForm = () => {
       .min(3, 'to short, min: 3')
       .max(15, 'to long, max: 15')
       .required(),
-    number: yup.number().typeError().moreThan(12, 'fnnf').required(),
+    phone: yup.number().typeError().moreThan(12, 'fnnf').required(),
   });
 
   return (
@@ -55,14 +55,14 @@ const ContactForm = () => {
           <ErrorMessage name="name" component="span" />
         </Label>
         <Label>
-          <span> Number</span>
+          <span> Phone</span>
           <Input
             type="tel"
-            name="number"
+            name="phone"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           />
-          <ErrorMessage name="number" component="span" />
+          <ErrorMessage name="phone" component="span" />
         </Label>
         <Button type="submit"> Add contact</Button>
       </Form>

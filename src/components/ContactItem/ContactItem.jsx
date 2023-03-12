@@ -1,18 +1,32 @@
 import { useDispatch } from 'react-redux';
-import { delateContact } from 'redux/contactsSlice';
-import { Button, ContactItem, ContactName } from './ContactItem.styled';
+import { deleteContact } from 'redux/operations';
+import {
+  Button,
+  ContactItem,
+  ContactName,
+  Icons,
+  Wrapper,
+} from './ContactItem.styled';
 
-const Contact = ({ id, name, number }) => {
+const Contact = ({ id, name, phone }) => {
   const dispatch = useDispatch();
   return (
     <ContactItem>
-      <ContactName>
-        <span> {name}</span> <span>{number}</span>
-      </ContactName>
+      <Wrapper>
+        <Icons>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
+            alt="avatar"
+            width={35}
+          />
+        </Icons>
+        <ContactName>{name}</ContactName>
+      </Wrapper>
+      <span>{phone}</span>
       <Button
         type="button"
         aria-label="Delete"
-        onClick={() => dispatch(delateContact(id))}
+        onClick={() => dispatch(deleteContact(id))}
       >
         Delete
       </Button>
